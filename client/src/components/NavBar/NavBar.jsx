@@ -5,8 +5,8 @@ import Switch from "../../assets/Button/Switch";
 
 export const navLinks = [
     { id: 1, url: '/', label: 'About' },
-    { id: 2, url: '/projects', label: 'projects' },
-    { id: 3, url: '/skills', label: 'skills' },
+    { id: 2, url: '/projects', label: 'project' },
+    { id: 3, url: '/experiences', label: 'experience' },
     { id: 4, url: '/contact', label: 'contact'}
 ];
 
@@ -48,7 +48,7 @@ const NavBar = ({ mode, setMode }) => {
                 }}
             >
                 <Typography sx={{marginLeft: '5px', color: darkMode ? "#9968ed" : "#3e2022", fontSize: {sm: "1rem", md: "1.5rem", lg: "2rem"}}}>Portfolio</Typography>
-                <Box sx={{ display: "flex", gap: {md: "0.8rem", lg: "1.5rem"} }}>
+                <Box sx={{ display: "flex", gap: {md: "0.5rem", lg: "1.5rem", xl: "3rem" }}}>
                     {navLinks.map((navlink) => (
                         <Button
                             key={navlink.id}

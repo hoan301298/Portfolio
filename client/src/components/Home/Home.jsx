@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Typography, Box, IconButton, TextField } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -9,11 +10,13 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import AddressIcon from "@mui/icons-material/Home";
 import DownloadIcon from "@mui/icons-material/Download";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
+import SchoolIcon from "@mui/icons-material/School";
 
 const Home = ({ mode }) => {
   const darkMode = mode === "dark";
   const [email, setEmail] = useState('');
   const [success, setSuccess] = useState(false);
+  const navigate = useNavigate();
 
   const handleDownload = () => {
     const fileUrl = "/files/Hoan Tran - Resume.pdf";
@@ -24,155 +27,97 @@ const Home = ({ mode }) => {
   };
 
   const handleRedirect = () => {
-
+    navigate('/projects');
   }
 
   return (
     <Box
       sx={{
-        height: "auto",
+        height: "80vh",
         width: "100%",
-        display: "flex",
-        justifyContent: "center",
+        display: 'flex',
+        py: "5vh"
       }}
     >
       {/* Main Card */}
       <Box
         sx={{
-          px: "3rem",
+          px: "5vh",
           display: "flex",
-          flexDirection: {xs: "column", xl: "row"},
-          alignItems: "center",
-          // justifyContent: "center",
-          gap: {md: "2rem", lg: "8rem"},
-          width: "auto",
-          height: "auto",
-          maxHeight: "200vh",
+          flexDirection: {xs: "column", md: "column", lg: "row", xl: "row"},
+          gap: {md: "2rem", lg: "5rem"},
+          width: "100%",
+          height: "70vh",
+          overflowY: 'auto', // Enable scrolling
+          '&::-webkit-scrollbar': {
+            width: '5px', // Scrollbar width
+          },
+          '&::-webkit-scrollbar-track': {
+            backgroundColor: '#f0f0f0', // Scrollbar track color
+          },
+          '&::-webkit-scrollbar-thumb': {
+            backgroundColor: '#555',    // Scrollbar thumb color
+            borderRadius: '2px',        // Rounded edges
+          },
+          '&::-webkit-scrollbar-thumb:hover': {
+            backgroundColor: '#222',    // Color on hover
+          },
         }}
       >
         {/* Left Section - Text */}
         <Box
           sx={{
             display: "flex",
-            justifyContent: "center",
             flexDirection: "column",
-            gap: {md: "2rem", lg: "2rem"},
+            height: "70vh",
+            gap: "3vh" 
           }}
         >
-          <Box 
-            sx={{
-              display: 'flex',
-              flexDirection: "column",
-              alignContent: "center",
-              gap: "2rem",
-            }}
-          >
-            <Box
-              sx={{
-                height: "auto",
-                display: 'flex',
-                flexDirection: "row",
-                justifyContent: "space-between",
-              }}
-            >
-              {/* Heading */}
-              <Box>
-                <Typography
-                  variant="h2"
-                  sx={{
-                    fontWeight: "bold",
-                    color: darkMode ? "#00d9ff" : "#3e2022",
-                    mb: "1rem",
-                  }}
-                >
-                  Hoan Tran
-                </Typography>
-                <Typography
-                  variant="h5"
-                  sx={{
-                    fontWeight: "bold",
-                    color: darkMode ? "#00d9ff" : "#3e2022",
-                  }}
-                >
-                  Full Stack Developer
-                </Typography>
-              </Box>
-              {/* Contact */}
-              <Box 
-                sx={{
-                  display: 'flex',
-                  flexDirection: "column",
-                  gap: "1rem"
-                }}
-              >
-                <Typography
-                  sx={{ color: darkMode ? "#fff" : "#3e2022" }}
-                >
-                  <IconButton
-                    sx={{ color: darkMode ? "#fff" : "#3e2022" }}
-                  >
-                    <EmailIcon/>
-                  </IconButton>
-                  tranhuuphuchoan@gmail.com
-                </Typography>
-                <Typography 
-                  sx={{ color: darkMode ? "#fff" : "#3e2022" }}
-                >
-                  <IconButton
-                    sx={{ color: darkMode ? "#fff" : "#3e2022" }}
-                  >
-                    <PhoneIcon/>
-                  </IconButton> 
-                  (+358) 449-135146
-                </Typography>
-                <Typography
-                  sx={{ color: darkMode ? "#fff" : "#3e2022" }}
-                >
-                  <IconButton
-                    sx={{ color: darkMode ? "#fff" : "#3e2022" }}
-                  >
-                    <AddressIcon/>
-                  </IconButton>
-                  Vaasa, 65100 Finland
-                </Typography>
-              </Box>
-            </Box>
-            <Box>
-              <Typography
-                variant="body1"
-                sx={{
-                  lineHeight: 1.8,
-                  color: darkMode ? "#ddd" : "#3e2022",
-                }}
-              >
-                I’m a skilled Full Stack Developer with a passion for creating intuitive, efficient, and dynamic web applications. With expertise in JavaScript, React, Node.js, and other modern web technologies, I thrive on solving complex problems and building impactful solutions that make a difference. My development process emphasizes clean, maintainable code and user-focused design, ensuring seamless experiences for end-users.
-                <br />
-                <br />
-                Beyond my technical skills, I am deeply committed to continuous learning. I stay updated with the latest tech trends, exploring new frameworks, libraries, and best practices to enhance my skills and deliver innovative results. Outside of coding, I enjoy experimenting with creative side projects that push my boundaries and allow me to apply my technical expertise in new and exciting ways. Whether it’s exploring the potential of emerging technologies or solving real-world challenges, I’m always eager to learn and grow.
-                <br />
-                <br />
-                Feel free to explore my portfolio to see my projects and achievements. If you have a compelling idea or need a partner for an ambitious project, don’t hesitate to connect. Together, we can create something truly remarkable!
-              </Typography>
-            </Box>
-          </Box>
           <Box
             sx={{
+              height: "auto",
               display: 'flex',
-              justifyContent: {md: "center", lg: ""},
-              flexDirection: "column",
-              gap: "2rem"
+              flexDirection: "row",
+              justifyContent: "space-between",
             }}
           >
-            {/* Social Icons */}
+            {/* Heading */}
+            <Box 
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <Typography
+                variant="h2"
+                sx={{
+                  fontWeight: "bold",
+                  color: darkMode ? "#00d9ff" : "#3e2022",
+                  mb: "1vh",
+                }}
+              >
+                Hoan Tran
+              </Typography>
+              <Typography
+                variant="h5"
+                sx={{
+                  fontWeight: "bold",
+                  color: darkMode ? "#00d9ff" : "#3e2022",
+                }}
+              >
+                Full Stack Developer
+              </Typography>
+            </Box>
             <Box 
               sx={{ 
-                display: "flex",
-                justifyContent: "center",
-                gap: "5rem",
+                display: 'flex',
+                gap: '1rem',
+                alignItems: 'center',
               }}
             >
               <IconButton
-                sx={{ color: darkMode ? "#fff" : "#3e2022", fontSize: "3rem" }}
+                sx={{ color: darkMode ? "#9968ed" : "#3e2022", fontSize: "2rem" }}
                 component="a"
                 href="https://www.linkedin.com/in/hoan-tran-fin/"
                 target="_blank"
@@ -181,7 +126,7 @@ const Home = ({ mode }) => {
                 <LinkedInIcon sx={{ fontSize: "inherit" }}/>
               </IconButton>
               <IconButton 
-                sx={{ color: darkMode ? "#fff" : "#3e2022", fontSize: "3rem" }}
+                sx={{ color: darkMode ? "#9968ed" : "#3e2022", fontSize: "2rem" }}
                 component="a"
                 href="https://github.com/hoan301298?tab=repositories"
                 target="_blank"
@@ -190,7 +135,7 @@ const Home = ({ mode }) => {
                 <GitHubIcon sx={{ fontSize: "inherit" }}/>
               </IconButton>
               <IconButton 
-                sx={{ color: darkMode ? "#fff" : "#3e2022", fontSize: "3rem" }}
+                sx={{ color: darkMode ? "#9968ed" : "#3e2022", fontSize: "2rem" }}
                 component="a"
                 href="https://www.facebook.com/bin.ho.andn98"
                 target="_blank"
@@ -199,7 +144,7 @@ const Home = ({ mode }) => {
                 <FacebookIcon sx={{ fontSize: "inherit" }}/>
               </IconButton>
               <IconButton
-                sx={{ color: darkMode ? "#fff" : "#3e2022", fontSize: "3rem" }}
+                sx={{ color: darkMode ? "#9968ed" : "#3e2022", fontSize: "2rem" }}
                 component="a"
                 href="https://www.instagram.com/ph_qang/"
                 target="_blank"
@@ -208,55 +153,177 @@ const Home = ({ mode }) => {
                 <InstagramIcon sx={{ fontSize: "inherit" }}/>
               </IconButton>
             </Box>
-            {/* Button section*/}
+            {/* Contact */}
+            <Box 
+              sx={{
+                display: 'flex',
+                flexDirection: "column",
+                
+              }}
+            >
+              <Typography
+                sx={{ color: darkMode ? "#fff" : "#3e2022" }}
+              >
+                <IconButton
+                  sx={{ color: darkMode ? "#fff" : "#3e2022" }}
+                >
+                  <EmailIcon/>
+                </IconButton>
+                tranhuuphuchoan@gmail.com
+              </Typography>
+              <Typography 
+                sx={{ color: darkMode ? "#fff" : "#3e2022" }}
+              >
+                <IconButton
+                  sx={{ color: darkMode ? "#fff" : "#3e2022" }}
+                >
+                  <PhoneIcon/>
+                </IconButton> 
+                (+358) 449-135146
+              </Typography>
+              <Typography
+                sx={{ color: darkMode ? "#fff" : "#3e2022" }}
+              >
+                <IconButton
+                  sx={{ color: darkMode ? "#fff" : "#3e2022" }}
+                >
+                  <AddressIcon/>
+                </IconButton>
+                Vaasa, 65100 Finland
+              </Typography>
+            </Box>
+          </Box>
+          <Box
+            sx={{
+              height: "60vh",
+              display: 'flex',
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
+          >
+            <Box>
+              <Typography
+                variant="body1"
+                sx={{
+                  lineHeight: 1.5,
+                  fontSize: {md: "1.7vh", lg: "2vh"},
+                  color: darkMode ? "#ddd" : "#3e2022",
+                }}
+              >
+                I’m a skilled Full Stack Developer with a passion for creating intuitive, efficient, and dynamic web applications. With expertise in modern web technologies, I thrive on solving complex problems and building impactful solutions that make a difference. My development process emphasizes clean, maintainable code and user-focused design, ensuring seamless experiences.
+                <br />
+                <br />
+                Outside of coding, I enjoy experimenting with creative side projects that push my boundaries and allow me to apply my technical expertise in new and exciting ways. Whether it’s exploring the potential of emerging technologies or solving real-world challenges, I’m always eager to learn and grow.
+                <br />
+                <br />
+                Feel free to explore my portfolio to see my projects and achievements. If you have a compelling idea or need a partner for an ambitious project, don’t hesitate to connect. Together, we can create something truly remarkable!
+              </Typography>
+            </Box>
             <Box
               sx={{
                 display: 'flex',
+                height: "15vh",
+                justifyContent: "space-between",
+                alignItems: "center",
                 flexDirection: "row",
-                justifyContent: "center",
-                gap: "5rem"
               }}
             >
-              <Button
-                variant="contained"
-                onClick={handleDownload}
+              <Box
                 sx={{
-                  backgroundColor: darkMode ? "#fff" : "#3e2022",
-                  color: darkMode ? "#3e2022" : "#fff",
-                  width: "30%",
-                  height: "40px",
-                  textTransform: "none",
-                    ":hover": {
-                        backgroundColor: "#00bce4",
-                    },
-                  gap: "2px"
+                  display: "flex",
+                  flexDirection: "column"
                 }}
               >
-                Download Resume
-                <IconButton sx={{ color: darkMode ? "#3e2022" : "#fff" }}>
-                  <DownloadIcon/>
-                </IconButton>
-              </Button>
-              <Button
-                variant="contained"
-                onClick={handleRedirect}
+                <Typography
+                  variant="h6" // Adjusted variant for better readability
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    fontWeight: "bold", // Emphasize the heading
+                    fontSize: {md: "2vh", lg: "2.5vh"},
+                    color: darkMode ? "#00d9ff" : "#3e2022", // Dark mode style
+                  }}
+                >
+                  <IconButton>
+                    <SchoolIcon/>
+                  </IconButton>
+                  Vaasa University of Applied Sciences
+                </Typography>
+                <Typography
+                  variant="h8" // Subheading size
+                  sx={{
+                    ml: "2.5vw",
+                    fontWeight: "bold", // Medium weight for supporting details
+                    fontSize: {md: "1.5vh", lg: "2vh"},
+                    color: darkMode ? "#00bfff" : "#3e2022", // Lighter shade for details
+                  }}
+                >
+                  Information Technology
+                </Typography>
+                <Typography
+                  variant="h8" // Subheading size
+                  sx={{
+                    ml: "2.5vw",
+                    fontWeight: "small", // Medium weight for supporting details
+                    fontSize: {md: "1.5vh", lg: "2vh"},
+                    color: darkMode ? "#00bfff" : "#3e2022", // Lighter shade for details
+                  }}
+                >
+                  August 2020 - June 2024
+                </Typography>
+              </Box>
+              {/* Button section*/}
+              <Box
                 sx={{
-                  backgroundColor: darkMode ? "#fff" : "#3e2022",
-                  color: darkMode ? "#3e2022" : "#fff",
-                  width: "30%",
-                  height: "40px",
-                  textTransform: "none",
-                    ":hover": {
-                        backgroundColor: "#00bce4",
-                    },
-                  gap: "5px"
+                  height: "100%",
+                  display: 'flex',
+                  flexDirection: "row",
+                  alignItems: "center",
+                  gap: "4rem",
                 }}
               >
-                Projects
-                <IconButton sx={{ color: darkMode ? "#3e2022" : "#fff" }}>
-                  <MenuBookIcon/>
-                </IconButton>
-              </Button>
+                <Button
+                  variant="contained"
+                  onClick={handleDownload}
+                  sx={{
+                    backgroundColor: darkMode ? "#fff" : "#3e2022",
+                    color: darkMode ? "#9968ed" : "#fff",
+                    width: "170px",
+                    height: "40px",
+                    textTransform: "none",
+                      ":hover": {
+                          backgroundColor: "#00bce4",
+                      },
+                    pl: "1.5rem"
+                  }}
+                >
+                  Download CV
+                  <IconButton sx={{ color: darkMode ? "#9968ed" : "#fff"}}>
+                    <DownloadIcon/>
+                  </IconButton>
+                </Button>
+                <Button
+                  variant="contained"
+                  onClick={handleRedirect}
+                  sx={{
+                    backgroundColor: darkMode ? "#fff" : "#3e2022",
+                    color: darkMode ? "#9968ed" : "#fff",
+                    width: "170px",
+                    height: "40px",
+                    textTransform: "none",
+                      ":hover": {
+                          backgroundColor: "#00bce4",
+                      },
+                    gap: "0.5rem",
+                    pl: "1.5rem"
+                  }}
+                >
+                  Projects
+                  <IconButton sx={{ color: darkMode ? "#9968ed" : "#fff" }}>
+                    <MenuBookIcon/>
+                  </IconButton>
+                </Button>
+              </Box>
             </Box>
           </Box>
         </Box>
@@ -265,70 +332,60 @@ const Home = ({ mode }) => {
         <Box 
           sx={{
             display: "flex",
-            alignItems: "center",
             flexDirection: "column",
-            gap: "4rem"
+            alignItems: "center",
+            height: "70vh",
+            maxHeight: "100vh",
+            gap: "2rem",
           }}
         >
           <Box
+            component="img"
+            src="/files/avatar.jpg"
+            alt="avatar"
             sx={{
-              width: {xs: "300px", lg: "370px"},
-              height: {xs: "450px", lg: "550px"},
-              borderRadius: "10%",
-              overflow: "hidden",
-              boxShadow: darkMode 
-                ? "0 0 20px #00d9ff"
-                : "0 0 10px #aeae00",
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <img 
-              src="/files/avatar.jpg" alt="avatar" 
-              style={{
-                width: "100%",
-                height: "auto",
-                objectFit: "contain"
-              }}  
-            />            
-          </Box>
+              width: { xs: '20vw', md: '16vw' }, // Responsive width
+              height: 'auto',                    // Maintain aspect ratio
+              aspectRatio: '9 / 16',             // Ensures 9:16 ratio
+              borderRadius: '10%',               // Rounded corners
+              boxShadow: darkMode
+              ? "0 0 10px #00d9ff"
+              : "0 0 10px #aeae00",
+            }}  
+          />
           <form onSubmit=""
             style={{
               display: "flex",
               flexDirection: "row",
-              justifyContent: "center",
+              justifyContent: "space-between",
               gap: "1rem",
               width: "100%",
-              maxWidth: "600px",
-              margin: "10px auto",
+              height: "3rem",
             }}
           >
-            <TextField
-              variant="outlined"
+            <input
               placeholder="Enter your email"
               type="email"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              sx={{
-                backgroundColor: "white",
-                borderRadius: "10px",
-                mb: 2,
-                width: "70%",
+              style={{
+                width: "80%",
+                border: "2px solid black"
               }}
             />
             <Button
               variant="contained"
               type="submit"
               sx={{
-                backgroundColor: "#007BFF",
+                backgroundColor: "#9968ed",
                 color: "white",
                 fontWeight: "bold",
                 textTransform: "none",
                 width: "auto",
                 maxWidth: "50%",
-                height: "56px",
-                borderRadius: "10px",
+                height: "3rem",
+                borderRadius: "10%",
                 fontSize: {xs: "0.6rem", md: '1rem'},
               }}
             >
