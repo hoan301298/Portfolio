@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import Switch from "../../assets/Button/Switch";
 
 export const navLinks = [
-    { id: 1, url: '/', label: 'About' },
-    { id: 2, url: '/projects', label: 'project' },
-    { id: 3, url: '/experiences', label: 'experience' },
+    { id: 1, url: '/', label: 'Home' },
+    { id: 2, url: '/experiences', label: 'experience' },
+    { id: 3, url: '/projects', label: 'project' },
     { id: 4, url: '/contact', label: 'contact'}
 ];
 

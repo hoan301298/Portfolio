@@ -1,14 +1,21 @@
 const nodemailer = require('nodemailer');
-const { validateEmail, mailTrapConfig } = require('../../configuration/emailConfig');
+const { validateEmail} = require('../../configuration/emailValidation');
+const Subscriber = require('../../models/subscription.mongo');
 
 async function sendEmail (req, res) {
     const { email } = req.body;
-
+    console.log(email);
     if(!email || typeof email !== 'string' || !validateEmail(email)) {
         return res.status(400).json({ error: 'Invalid email address'});
     }
 
-    const transporter = nodemailer.createTransport(mailTrapConfig);
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: process.env.MAIL_USER,
+            pass: process.env.MAIL_PASSWORD
+        }
+    });
 
     const mailOptions = {
         from: '"Hoan Tran 🐯" <tranhuuphuchoan@gmail.com>',
@@ -34,10 +41,14 @@ async function sendEmail (req, res) {
     }
     try {
         const info = await transporter.sendMail(mailOptions);
-        res.status(200).json({message: 'Subscription email sent successfully', info});
+        const newSubscriber = new Subscriber({
+            email: email
+        });
+        await newSubscriber.save();
+        res.status(200).json({message: 'Subscription email sent successfully'});
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: 'Failed to send subscription email' })        
+        res.status(500).json({ error })        
     }
 }
 

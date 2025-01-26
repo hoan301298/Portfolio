@@ -1,21 +1,31 @@
 import React, { useState } from 'react'
-import { Button, Typography, Box, IconButton, TextField } from '@mui/material';
+import { Button, Typography, Box, IconButton, Alert } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import axios from "axios";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import InstagramIcon from "@mui/icons-material/Instagram"
+import InstagramIcon from "@mui/icons-material/Instagram";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 import AddressIcon from "@mui/icons-material/Home";
 import DownloadIcon from "@mui/icons-material/Download";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import SchoolIcon from "@mui/icons-material/School";
+import BadmintonIcon from "@mui/icons-material/SportsTennisSharp";
+import ComputerIcon from "@mui/icons-material/Computer";
+import FootballIcon from "@mui/icons-material/SportsSoccer";
+import TravelIcon from "@mui/icons-material/TravelExplore";
+import CoffeIcon from "@mui/icons-material/Coffee";
+import SingingIcon from "@mui/icons-material/MicNone";
+
+const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 const Home = ({ mode }) => {
   const darkMode = mode === "dark";
   const [email, setEmail] = useState('');
   const [success, setSuccess] = useState(false);
+  const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
   const handleDownload = () => {
@@ -28,6 +38,22 @@ const Home = ({ mode }) => {
 
   const handleRedirect = () => {
     navigate('/projects');
+  };
+
+  const handleSubmitSubscribe = async (e) => {
+    e.preventDefault();
+    try {
+      const emailRequest = { email: email }
+      const response = await axios.post(`${SERVER_URL}/v1/subscribe`, emailRequest);
+      if (response.status === 200) {
+        setSuccess(true);
+        setMessage(response.data.message);
+        // setMessage(response.data);
+      }
+    } catch (error) {
+      console.log(error);
+      setMessage(error);
+    }
   }
 
   return (
@@ -109,48 +135,113 @@ const Home = ({ mode }) => {
                 Full Stack Developer
               </Typography>
             </Box>
+            {/* Hobbies */}
             <Box 
               sx={{ 
                 display: 'flex',
-                gap: '1rem',
-                alignItems: 'center',
+                flexDirection: "column",
+                alignItems: "self-start",
               }}
             >
               <IconButton
                 sx={{ color: darkMode ? "#9968ed" : "#3e2022", fontSize: "2rem" }}
-                component="a"
-                href="https://www.linkedin.com/in/hoan-tran-fin/"
-                target="_blank"
-                rel="noopener noreferrer"
               >
-                <LinkedInIcon sx={{ fontSize: "inherit" }}/>
+                <BadmintonIcon/>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: darkMode ? "#00d9ff" : "#3e2022",
+                    ml: "5px"
+                  }}
+                >
+                  Badminton
+                </Typography>
               </IconButton>
               <IconButton 
                 sx={{ color: darkMode ? "#9968ed" : "#3e2022", fontSize: "2rem" }}
-                component="a"
-                href="https://github.com/hoan301298?tab=repositories"
-                target="_blank"
-                rel="noopener noreferrer"
               >
-                <GitHubIcon sx={{ fontSize: "inherit" }}/>
+                <ComputerIcon/>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: darkMode ? "#00d9ff" : "#3e2022",
+                    ml: "5px"
+                  }}
+                >
+                  New Tech
+                </Typography>
               </IconButton>
               <IconButton 
                 sx={{ color: darkMode ? "#9968ed" : "#3e2022", fontSize: "2rem" }}
-                component="a"
-                href="https://www.facebook.com/bin.ho.andn98"
-                target="_blank"
-                rel="noopener noreferrer"
               >
-                <FacebookIcon sx={{ fontSize: "inherit" }}/>
+                <FootballIcon/>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: darkMode ? "#00d9ff" : "#3e2022",
+                    ml: "5px"
+                  }}
+                >
+                  Football
+                </Typography>
               </IconButton>
               <IconButton
                 sx={{ color: darkMode ? "#9968ed" : "#3e2022", fontSize: "2rem" }}
-                component="a"
-                href="https://www.instagram.com/ph_qang/"
-                target="_blank"
-                rel="noopener noreferrer"
               >
-                <InstagramIcon sx={{ fontSize: "inherit" }}/>
+              </IconButton>
+            </Box>
+            <Box 
+              sx={{ 
+                display: 'flex',
+                flexDirection: "column",
+                alignItems: "self-start",
+              }}
+            >
+              <IconButton
+                sx={{ color: darkMode ? "#9968ed" : "#3e2022", fontSize: "2rem" }}
+              >
+                <TravelIcon/>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: darkMode ? "#00d9ff" : "#3e2022",
+                    ml: "5px"
+                  }}
+                >
+                  Travelling
+                </Typography>
+              </IconButton>
+              <IconButton 
+                sx={{ color: darkMode ? "#9968ed" : "#3e2022", fontSize: "2rem" }}
+              >
+                <CoffeIcon/>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: darkMode ? "#00d9ff" : "#3e2022",
+                    ml: "5px"
+                  }}
+                >
+                  Coffee Time
+                </Typography>
+              </IconButton>
+              <IconButton 
+                sx={{ color: darkMode ? "#9968ed" : "#3e2022", fontSize: "2rem" }}
+              >
+                <SingingIcon/>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: darkMode ? "#00d9ff" : "#3e2022",
+                    ml: "5px"
+                  }}
+                >
+                  Singing
+                </Typography>
+              </IconButton>
+              <IconButton
+                sx={{ color: darkMode ? "#9968ed" : "#3e2022", fontSize: "2rem" }}
+              >
               </IconButton>
             </Box>
             {/* Contact */}
@@ -158,7 +249,6 @@ const Home = ({ mode }) => {
               sx={{
                 display: 'flex',
                 flexDirection: "column",
-                
               }}
             >
               <Typography
@@ -224,7 +314,6 @@ const Home = ({ mode }) => {
                 display: 'flex',
                 height: "15vh",
                 justifyContent: "space-between",
-                alignItems: "center",
                 flexDirection: "row",
               }}
             >
@@ -244,7 +333,11 @@ const Home = ({ mode }) => {
                     color: darkMode ? "#00d9ff" : "#3e2022", // Dark mode style
                   }}
                 >
-                  <IconButton>
+                  <IconButton
+                    sx={{
+                      color: darkMode ? "#9968ed" : "#3e2022"
+                    }}
+                  >
                     <SchoolIcon/>
                   </IconButton>
                   Vaasa University of Applied Sciences
@@ -252,10 +345,10 @@ const Home = ({ mode }) => {
                 <Typography
                   variant="h8" // Subheading size
                   sx={{
-                    ml: "2.5vw",
+                    ml: "2vw",
                     fontWeight: "bold", // Medium weight for supporting details
                     fontSize: {md: "1.5vh", lg: "2vh"},
-                    color: darkMode ? "#00bfff" : "#3e2022", // Lighter shade for details
+                    color: darkMode ? "#ddd" : "#3e2022", // Lighter shade for details
                   }}
                 >
                   Information Technology
@@ -263,10 +356,10 @@ const Home = ({ mode }) => {
                 <Typography
                   variant="h8" // Subheading size
                   sx={{
-                    ml: "2.5vw",
+                    ml: "2vw",
                     fontWeight: "small", // Medium weight for supporting details
                     fontSize: {md: "1.5vh", lg: "2vh"},
-                    color: darkMode ? "#00bfff" : "#3e2022", // Lighter shade for details
+                    color: darkMode ? "#ddd" : "#3e2022", // Lighter shade for details
                   }}
                 >
                   August 2020 - June 2024
@@ -275,54 +368,108 @@ const Home = ({ mode }) => {
               {/* Button section*/}
               <Box
                 sx={{
-                  height: "100%",
-                  display: 'flex',
-                  flexDirection: "row",
-                  alignItems: "center",
-                  gap: "4rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  gap: "2vh"
                 }}
               >
-                <Button
-                  variant="contained"
-                  onClick={handleDownload}
+                <Box
                   sx={{
-                    backgroundColor: darkMode ? "#fff" : "#3e2022",
-                    color: darkMode ? "#9968ed" : "#fff",
-                    width: "170px",
-                    height: "40px",
-                    textTransform: "none",
-                      ":hover": {
-                          backgroundColor: "#00bce4",
-                      },
-                    pl: "1.5rem"
+                    height: "100%",
+                    display: 'flex',
+                    flexDirection: "row",
+                    alignItems: "center",
+                    gap: "4rem",
                   }}
                 >
-                  Download CV
-                  <IconButton sx={{ color: darkMode ? "#9968ed" : "#fff"}}>
-                    <DownloadIcon/>
-                  </IconButton>
-                </Button>
-                <Button
-                  variant="contained"
-                  onClick={handleRedirect}
-                  sx={{
-                    backgroundColor: darkMode ? "#fff" : "#3e2022",
-                    color: darkMode ? "#9968ed" : "#fff",
-                    width: "170px",
-                    height: "40px",
-                    textTransform: "none",
-                      ":hover": {
-                          backgroundColor: "#00bce4",
-                      },
-                    gap: "0.5rem",
-                    pl: "1.5rem"
+                  <Button
+                    variant="contained"
+                    onClick={handleDownload}
+                    sx={{
+                      backgroundColor: darkMode ? "#fff" : "#3e2022",
+                      color: darkMode ? "#9968ed" : "#fff",
+                      width: "170px",
+                      height: "40px",
+                      textTransform: "none",
+                        ":hover": {
+                            backgroundColor: "#00bce4",
+                        },
+                      pl: "1.5rem"
+                    }}
+                  >
+                    Download CV
+                    <IconButton sx={{ color: darkMode ? "#9968ed" : "#fff"}}>
+                      <DownloadIcon/>
+                    </IconButton>
+                  </Button>
+                  <Button
+                    variant="contained"
+                    onClick={handleRedirect}
+                    sx={{
+                      backgroundColor: darkMode ? "#fff" : "#3e2022",
+                      color: darkMode ? "#9968ed" : "#fff",
+                      width: "170px",
+                      height: "40px",
+                      textTransform: "none",
+                        ":hover": {
+                            backgroundColor: "#00bce4",
+                        },
+                      gap: "0.5rem",
+                      pl: "1.5rem"
+                    }}
+                  >
+                    Projects
+                    <IconButton sx={{ color: darkMode ? "#9968ed" : "#fff" }}>
+                      <MenuBookIcon/>
+                    </IconButton>
+                  </Button>
+                </Box>
+                <Box 
+                  sx={{ 
+                    display: 'flex',
+                    gap: '2vw',
+                    justifyContent: "center",
+                    alignItems: 'center',
                   }}
                 >
-                  Projects
-                  <IconButton sx={{ color: darkMode ? "#9968ed" : "#fff" }}>
-                    <MenuBookIcon/>
+                  <IconButton
+                    sx={{ color: darkMode ? "#9968ed" : "#3e2022", fontSize: "1.5vw" }}
+                    component="a"
+                    href="https://www.linkedin.com/in/hoan-tran-fin/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <LinkedInIcon sx={{ fontSize: "inherit" }}/>
                   </IconButton>
-                </Button>
+                  <IconButton 
+                    sx={{ color: darkMode ? "#9968ed" : "#3e2022", fontSize: "1.5vw" }}
+                    component="a"
+                    href="https://github.com/hoan301298?tab=repositories"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <GitHubIcon sx={{ fontSize: "inherit" }}/>
+                  </IconButton>
+                  <IconButton 
+                    sx={{ color: darkMode ? "#9968ed" : "#3e2022", fontSize: "1.5vw" }}
+                    component="a"
+                    href="https://www.facebook.com/bin.ho.andn98"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FacebookIcon sx={{ fontSize: "inherit" }}/>
+                  </IconButton>
+                  <IconButton
+                    sx={{ color: darkMode ? "#9968ed" : "#3e2022", fontSize: "1.5vw" }}
+                    component="a"
+                    href="https://www.instagram.com/ph_qang/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <InstagramIcon sx={{ fontSize: "inherit" }}/>
+                  </IconButton>
+                </Box>
               </Box>
             </Box>
           </Box>
@@ -334,9 +481,10 @@ const Home = ({ mode }) => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            height: "70vh",
+            height: "auto",
             maxHeight: "100vh",
-            gap: "2rem",
+            gap: "3vh",
+            mt: "1vh"
           }}
         >
           <Box
@@ -353,45 +501,55 @@ const Home = ({ mode }) => {
               : "0 0 10px #aeae00",
             }}  
           />
-          <form onSubmit=""
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between",
-              gap: "1rem",
-              width: "100%",
-              height: "3rem",
-            }}
-          >
-            <input
-              placeholder="Enter your email"
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+          {message ? (
+            <Alert
+              severity={success ? 'success' : 'error'} // Dynamically set severity
+              onClose={() => setMessage('')} // Clear the message on close
+              sx={{ mb: 2 }}
+            >
+              {message}
+            </Alert>
+            ) : (
+            <form 
+              onSubmit={handleSubmitSubscribe}
               style={{
-                width: "80%",
-                border: "2px solid black"
-              }}
-            />
-            <Button
-              variant="contained"
-              type="submit"
-              sx={{
-                backgroundColor: "#9968ed",
-                color: "white",
-                fontWeight: "bold",
-                textTransform: "none",
-                width: "auto",
-                maxWidth: "50%",
-                height: "3rem",
-                borderRadius: "10%",
-                fontSize: {xs: "0.6rem", md: '1rem'},
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+                gap: "1vw",
+                width: "100%",
               }}
             >
-              Subscribe
-            </Button>
-          </form>
+              <input
+                placeholder="Enter your email"
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                style={{
+                  width: "80%",
+                  border: "2px solid black"
+                }}
+              />
+              <Button
+                variant="contained"
+                type="submit"
+                sx={{
+                  backgroundColor: "#9968ed",
+                  color: "white",
+                  fontWeight: "bold",
+                  textTransform: "none",
+                  width: "auto",
+                  maxWidth: "50%",
+                  height: "auto",
+                  borderRadius: "10%",
+                  fontSize: { xs: "0.6rem", md: "1rem" },
+                }}
+              >
+                Subscribe
+              </Button>
+            </form>
+          )}
         </Box>
       </Box>
     </Box>
