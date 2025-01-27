@@ -1,0 +1,26 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install-server": "npm install --prefix server",
+    "install-client": "npm install --prefix client",
+    "install": "npm run install-server && npm run install-client",
+    "server": "npm start --prefix server",
+    "client": "npm start --prefix client",
+    "deploy": "npm run build --prefix client && npm run server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoan301298/Portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hoan301298/Portfolio/issues"
+  },
+  "homepage": "https://github.com/hoan301298/Portfolio#readme",
+  "description": ""
+}
