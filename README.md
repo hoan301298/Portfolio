@@ -34,16 +34,16 @@ This is a personal portfolio project built with a **React.js frontend** and a **
 If you prefer to pull pre-built images from Docker Hub instead of building them locally, you can use the following commands:
 
 #### Frontend
-    ```sh
-    docker pull hoantran301298/portfolio-frontend
-    docker run -p 3000:3000 hoantran301298/portfolio-frontend
-    ```
+   ```sh
+   docker pull hoantran301298/portfolio-frontend
+   docker run -p 3000:3000 hoantran301298/portfolio-frontend
+   ```
 
 #### Backend
-    ```sh
-    docker pull hoantran301298/portfolio-backend
-    docker run -p 8000:8000 hoantran301298/portfolio-backend
-    ```
+   ```sh
+   docker pull hoantran301298/portfolio-backend
+   docker run -p 8000:8000 hoantran301298/portfolio-backend
+   ```
 
 #### Access:
     localhost:3000
