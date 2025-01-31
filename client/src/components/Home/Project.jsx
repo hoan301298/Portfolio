@@ -28,9 +28,9 @@ const Project = ({ mode }) => {
                 px: "2vw",
                 display: "flex",
                 flexDirection: {xs: 'column', sm: 'column', md: 'column', lg: 'row', xl: 'row'},
-                gap: {xs: "2vw", lg: "2vw"},
                 width: "100%",
                 height: "73vh",
+                justifyContent: "space-between",
                 overflowY: 'auto', // Enable scrolling
                 '&::-webkit-scrollbar': {
                     width: '5px', // Scrollbar width
@@ -52,8 +52,8 @@ const Project = ({ mode }) => {
                 sx={{
                     display: "flex",
                     flexDirection: "column",
-                    gap: "3vh",
-                    width: {xs: '100%', lg: '55%'},
+                    gap: "2vh",
+                    width: {xs: '100%', lg: '57%'},
                     height: "100%"
                 }}
             >
@@ -73,7 +73,7 @@ const Project = ({ mode }) => {
                         display: "flex",
                         flexDirection: "column",
                         gap: "1vh",
-                        height: "85%",
+                        height: "88%",
                         justifyContent: "space-between"
                     }}
                 >
@@ -95,20 +95,21 @@ const Project = ({ mode }) => {
                                         justifyContent: "space-between",
                                         alignItems: "center",
                                         width: "100%",
-                                        gap: "5vw",
+                                        gap: "2vw",
                                     }}
                                 >
                                     <Box 
                                         sx={{
                                             display: "flex",
                                             flexDirection: "column",
-                                            gap: "0.5vh"
+                                            width: "auto",
+                                            gap: "0.2vh"
                                         }}
                                     >
                                         <Typography variant="h6" sx={{ color: darkMode ? "#7CD496" : "#3e2022", fontWeight: 'bold' }}>
                                             {project.title}
                                         </Typography>
-                                        <Typography variant="body2" sx={{ color: darkMode ? "#fff" : "#3e2022" }}>
+                                        <Typography variant="body2" sx={{ color: darkMode ? "#fff" : "#3e2022",  }}>
                                             {project.description}
                                         </Typography>
                                     </Box>
@@ -156,9 +157,9 @@ const Project = ({ mode }) => {
                                             gap: "2vw"
                                         }}
                                     >
-                                        <Typography variant="body1" > <a href={project.link}>GitHub Link</a></Typography>
-                                        {project.thesis_link && (
-                                            <Typography variant="body1" > <a href={project.thesis_link}>Thesis Link</a></Typography>
+                                        <Typography variant="body1" > <a href={project.github_link}>GitHub Link</a></Typography>
+                                        {project.website && (
+                                            <Typography variant="body1" > <a href={project.website}>Website</a></Typography>
                                         )}
                                     </Box>
                                 </Box>
@@ -172,9 +173,9 @@ const Project = ({ mode }) => {
                 sx={{
                     display: "flex",
                     flexDirection: "column",
-                    gap: "3vh",
+                    gap: "2vh",
                     height: '100%',
-                    width: {xs: "100", lg:"45%"},
+                    width: {xs: "100", lg:"40%"},
                 }}
             >
                 <Box
@@ -192,7 +193,7 @@ const Project = ({ mode }) => {
                     sx={{
                         display: "flex",
                         flexDirection: "column",
-                        height: "85%",
+                        height: "88%",
                         justifyContent: "space-between",
                         gap: "1vh"
                     }}

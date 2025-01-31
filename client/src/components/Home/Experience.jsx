@@ -81,7 +81,7 @@ const Experience = ({ mode }) => {
                                             display: "flex",
                                             flexDirection: "row",
                                             alignItems: "center",
-                                            justifyContent: "space-between",
+                                            // justifyContent: "space-between",
                                             width: "100%",
                                             gap: "5vw",
                                         }}
@@ -90,14 +90,14 @@ const Experience = ({ mode }) => {
                                             sx={{
                                                 display: "flex",
                                                 flexDirection: "column",
-                                                gap: "0.5vh",
-                                                width: "70%",
+                                                gap: "0.2vh",
+                                                width: "60%",
                                             }}
                                         >
                                             <Typography variant="h6" sx={{ color: darkMode ? "#7CD496" : "#3e2022", fontWeight: 'bold' }}>
                                                 {experience.companyName}
                                             </Typography>
-                                            <Typography variant="body1" sx={{ color: darkMode ? "#fff" : "#3e2022", fontStyle: "italic" }}>
+                                            <Typography variant="body1" sx={{ color: darkMode ? "#9968ed" : "#2A34B9", fontStyle: "italic" }}>
                                                 {experience.position}
                                             </Typography>
                                             <Typography variant="body2" sx={{ color: darkMode ? "#fff" : "#3e2022" }}>
@@ -106,7 +106,7 @@ const Experience = ({ mode }) => {
                                         </Box>
                                         <Box
                                             sx={{
-                                                width: "15%",
+                                                width: "10vw",
                                             }}
                                         >
                                             <Typography variant="subtitle1" sx={{ color: darkMode ? "#fff" : "#3e2022", fontWeight: "bold",  }}>
@@ -114,18 +114,18 @@ const Experience = ({ mode }) => {
                                             </Typography>
                                         </Box>
                                         <Box
-                                        component="img"
-                                        src={experience.image}
-                                        alt="companyImage"
-                                            sx={{
-                                                width: { xs: '20vw', md: '12vh' }, // Responsive width
-                                                height: 'auto',                    // Maintain aspect ratio
-                                                aspectRatio: '1 / 1',
-                                                borderRadius: '10%',               // Rounded corners
-                                                boxShadow: darkMode
-                                                ? "0 0 10px #00d9ff"
-                                                : "0 0 10px #aeae00",
-                                            }}  
+                                            component="img"
+                                            src={experience.image}
+                                            alt="companyImage"
+                                                sx={{
+                                                    width: { xs: '20vw', md: '7vw' }, // Responsive width
+                                                    height: 'auto',                    // Maintain aspect ratio
+                                                    aspectRatio: '1 / 1',
+                                                    borderRadius: '10%',               // Rounded corners
+                                                    boxShadow: darkMode
+                                                    ? "0 0 10px #00d9ff"
+                                                    : "0 0 10px #9968ed",
+                                                }}  
                                         />
                                         <div className='scroll-arrow'>
                                             <RiArrowDownWideLine size={30} color={darkMode? "#6666FF" : "#3e2022"}/>

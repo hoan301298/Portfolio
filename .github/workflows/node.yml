@@ -20,9 +20,24 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
+      
       - name: Use MongoDB from GitHub actions
         uses: supercharge/mongodb-github-action@1.11.0
         with:
           mongodb-version: ${{ matrix.mongodb-version }}
-      - run: npm install
-      - run: npm run --prefix client
+      
+      - name: Install npm dependencies
+        run: npm install
+      
+      - name: Run React.js frontend
+        run: npm run --prefix client
+      
+      - name: Deploy to GoDaddy
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.GODADDY_SSH_HOST }}
+          username: ${{ secrets.GODADDY_SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          source: "."
+          target: "server/public/index.html"

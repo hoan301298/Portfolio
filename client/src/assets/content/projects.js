@@ -11,8 +11,8 @@ export const projectList = [
             '• Implemented Docker compose and Kubernetes clusters for seamless deployment of microservices.',
             'Grade: 4.0/5.0'
         ],
-        link: 'https://github.com/hoan301298/Healthcare-Assistance',
-        thesis_link: 'https://urn.fi/URN:NBN:fi:amk-2024053119055'
+        github_link: 'https://github.com/hoan301298/Healthcare-Assistance',
+        website: 'https://urn.fi/URN:NBN:fi:amk-2024053119055'
     },
     {
         title: 'NASA Mission Control',
@@ -24,7 +24,8 @@ export const projectList = [
             '• User-friendly interface design with implementation library Arwes is used for space science projects.',
             '• Through the CI/CD process, master the basic knowledge of DevOps work and master Docker and Kubernetes. Apply E2E testing.',
         ],
-        link: 'https://github.com/hoan301298/NASA-project',
+        github_link: 'https://github.com/hoan301298/NASA-project',
+        website: 'https://nasa-api-frontend-d41r.onrender.com/'
     },
     {
         title: 'User Story',
@@ -37,7 +38,7 @@ export const projectList = [
             '• Handle exceptions gracefully for SSH connection failures, file access issues, or scheduling errors.',
             '• Maintain detailed logs to track the script\'s performance and aid in troubleshooting.'
         ],
-        link: 'https://github.com/hoan301298/User-Story',
+        github_link: 'https://github.com/hoan301298/User-Story',
     },
     {
         title: 'Portfolio',
@@ -50,6 +51,6 @@ export const projectList = [
             '• Conducted automation test and enhanced response speed.',
             '• Implemented Docker compose and Kubernetes clusters for seamless deployment of microservices.'
         ],
-        link: 'https://github.com/hoan301298/Portfolio',
+        github_link: 'https://github.com/hoan301298/Portfolio',
     },
 ];

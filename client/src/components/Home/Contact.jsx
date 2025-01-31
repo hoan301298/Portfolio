@@ -35,7 +35,7 @@ const Contact = ({ mode }) => {
     const handleSubmitFeedback = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`${SERVER_URL}/v1/feedback`, formData);
+            const response = await axios.post(`${SERVER_URL}/api/feedback`, formData);
             console.log(formData.message);
             if (response.status === 200) {
                 setTyping(false);
@@ -315,7 +315,7 @@ const Contact = ({ mode }) => {
                                     >
                                     <AddressIcon/>
                                     </IconButton>
-                                    Vaasa, 65100 Finland
+                                    Finland
                                 </Typography>
                                 <Box 
                                     sx={{ 

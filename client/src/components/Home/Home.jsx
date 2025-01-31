@@ -29,7 +29,7 @@ const Home = ({ mode }) => {
   const navigate = useNavigate();
 
   const handleDownload = () => {
-    const fileUrl = "/files/Hoan Tran - Resume.pdf";
+    const fileUrl = "/files/HoanTran-Resume.pdf";
     const link = document.createElement("a");
     link.href = fileUrl;
     link.download = "Hoan Tran - Resume.pdf";
@@ -44,7 +44,7 @@ const Home = ({ mode }) => {
     e.preventDefault();
     try {
       const emailRequest = { email: email }
-      const response = await axios.post(`${SERVER_URL}/v1/subscribe`, emailRequest);
+      const response = await axios.post(`${SERVER_URL}/api/subscribe`, emailRequest);
       if (response.status === 200) {
         setSuccess(true);
         setMessage(response.data.message);
@@ -279,7 +279,7 @@ const Home = ({ mode }) => {
                 >
                   <AddressIcon/>
                 </IconButton>
-                Vaasa, 65100 Finland
+                Finland
               </Typography>
             </Box>
           </Box>
